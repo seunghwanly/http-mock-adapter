@@ -2,7 +2,8 @@ import 'package:http_mock_adapter/src/extensions/signature.dart';
 import 'package:http_mock_adapter/src/matchers/http_matcher.dart';
 import 'package:http_mock_adapter/src/request.dart';
 import 'package:http_mock_adapter/src/types.dart';
-import 'package:logger/logger.dart';
+
+import '../logger/logger.dart';
 
 /// An ability that lets a construct to record a [RequestMatcher] history.
 mixin Recording {

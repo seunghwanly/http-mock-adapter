@@ -17,21 +17,14 @@ class MockResponseBody extends ResponseBody implements MockResponse {
   final Duration? delay;
 
   MockResponseBody(
-    Stream<Uint8List> stream,
-    int statusCode, {
-    required Map<String, List<String>> headers,
-    String? statusMessage,
-    required bool isRedirect,
-    List<RedirectRecord>? redirects,
+    super.stream,
+    super.statusCode, {
+    required Map<String, List<String>> super.headers,
+    super.statusMessage,
+    required super.isRedirect,
+    super.redirects,
     this.delay,
-  }) : super(
-          stream,
-          statusCode,
-          headers: headers,
-          statusMessage: statusMessage,
-          isRedirect: isRedirect,
-          redirects: redirects,
-        );
+  });
 
   static MockResponseBody from(
     String text,

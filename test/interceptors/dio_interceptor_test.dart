@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
-import 'package:logger/logger.dart';
+import 'package:http_mock_adapter/src/logger/logger.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -49,16 +49,18 @@ void main() {
       dioInterceptor1.onGet(
           '/interceptor-1-route', (server) => server.reply(200, 'OK'));
 
-      final capturedLogs = <OutputEvent>[];
-      Logger.addOutputListener((event) {
-        capturedLogs.add(event);
+      final capturedLogs = <(String, Level)>[];
+      Logger.addOutputListener((message, level) {
+        capturedLogs.add((message, level));
       });
 
       await dio.get('/interceptor-1-route');
 
-      expect(capturedLogs.first.origin.message,
-          'Matched request: GET /interceptor-1-route');
-      expect(capturedLogs.first.origin.level, Level.debug);
+      expect(
+        capturedLogs.first.$1,
+        'Matched request: GET /interceptor-1-route',
+      );
+      expect(capturedLogs.first.$2, Level.debug);
     });
     test('if printLogs is false we should not see logs on mocked calls',
         () async {
@@ -70,8 +72,8 @@ void main() {
           '/interceptor-1-route', (server) => server.reply(200, 'OK'));
 
       final capturedLogs = <OutputEvent>[];
-      Logger.addOutputListener((event) {
-        capturedLogs.add(event);
+      Logger.addOutputListener((message, level) {
+        capturedLogs.add((message, level));
       });
 
       await dio.get('/interceptor-1-route');

@@ -9,17 +9,12 @@ class MockDioException extends DioException implements MockResponse {
   final Duration? delay;
 
   MockDioException({
-    required RequestOptions requestOptions,
-    Response? response,
-    DioExceptionType type = DioExceptionType.unknown,
-    dynamic error,
+    required super.requestOptions,
+    super.response,
+    super.type,
+    dynamic super.error,
     this.delay,
-  }) : super(
-          requestOptions: requestOptions,
-          response: response,
-          type: type,
-          error: error,
-        );
+  });
 
   static MockDioException from(DioException dioError, [Duration? delay]) =>
       MockDioException(

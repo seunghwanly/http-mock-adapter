@@ -6,7 +6,6 @@ import 'package:http_mock_adapter/src/logger/logger.dart';
 import 'package:http_mock_adapter/src/matchers/http_matcher.dart';
 import 'package:http_mock_adapter/src/mixins/mixins.dart';
 import 'package:http_mock_adapter/src/response.dart';
-import 'package:logger/logger.dart';
 
 /// [HttpClientAdapter] extension with data mocking and recording functionality.
 class DioAdapter with Recording, RequestHandling implements HttpClientAdapter {

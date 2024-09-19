@@ -3,7 +3,6 @@ import 'package:http_mock_adapter/src/logger/logger.dart';
 import 'package:http_mock_adapter/src/matchers/http_matcher.dart';
 import 'package:http_mock_adapter/src/mixins/mixins.dart';
 import 'package:http_mock_adapter/src/response.dart';
-import 'package:logger/logger.dart';
 
 /// [DioInterceptor] is a class for mocking [Dio] requests with [Interceptor].
 class DioInterceptor extends Interceptor with Recording, RequestHandling {
